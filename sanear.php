@@ -5,4 +5,12 @@ function sanear($var) {
     : "";
     return $tmp;
 }
+
+function sanearArr($arr) {
+    $arrSaneado = [];
+    foreach ($arr as $value) {
+        $arrSaneado[] = sanear($value); 
+    }
+    return $arrSaneado;
+}
 ?>

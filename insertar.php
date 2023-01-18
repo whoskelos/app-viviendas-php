@@ -86,6 +86,7 @@
         <P><LABEL>Foto:</LABEL>
 
             <INPUT TYPE="FILE" NAME="foto" value='examinar'>
+            <input type="hidden" name="MAX_FILE_SIZE" value="102400">
 
         </P>
 
