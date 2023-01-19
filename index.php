@@ -26,7 +26,7 @@
             <ul>
                 <li><a href="">Consultar viviendas</a></li>
                 <li><a href="insertar.php">Insertar nueva vivienda</a></li>
-                <li><a href="">Eliminar vivienda</a></li>
+                <li><a href="borrar.php">Eliminar vivienda</a></li>
             </ul>
             <hr>
             <p>[ <a href="cerrarSesion.php">Desconectar</a> ]</p>

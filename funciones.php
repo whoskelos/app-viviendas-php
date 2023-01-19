@@ -82,6 +82,7 @@ function insertarViv($tipo,$zona,$direccion,$dormitorios,$precio,$tamanyo,$extra
     //convierto los extras a string
     $extrasString = implode(",",$extras);
     include 'conexion.php';
+    //si hay foto
     if ($foto != "") {
         $db = conectaDB();
         $db->query("USE marzo");
@@ -113,9 +114,38 @@ function insertarViv($tipo,$zona,$direccion,$dormitorios,$precio,$tamanyo,$extra
                 registrarErrorBD("Error al registrar vivienda");
             }
         }
-
-    } else {
-        return "no hay foto";
+    //si no hay foto
+    } else { 
+        $db = conectaDB();
+        $db->query("USE marzo");
+        //comprobamos con la direccion si ya existe para comprobar si el registro esta duplicado
+        $select = $db->query("SELECT * FROM viviendas where direccion = '$direccion'");
+        if ($result = $select->rowCount() > 0) {
+            registrarErrorBD("Registro duplicado");
+            return "<p>Registro duplicado</p><a href='insertar.php'>[ Insertar otra vivienda ]</a>";
+        } else {
+            $query = $db->prepare("INSERT INTO viviendas (tipo,zona,direccion,dormitorios,precio,tamanyo,extras,foto) VALUES (?,?,?,?,?,?,?,?)");
+            $result = $query->execute(array($tipo,$zona,$direccion,$dormitorios,$precio,$tamanyo,$extrasString,$foto));
+            if ($result == true) {
+                return "<p>Vivienda insertada correctamente</p>
+                <p>Esto son los datos introducidos:</p>
+                <ul>
+                    <li>Tipo: $tipo</li>
+                    <li>Zona: $zona</li>
+                    <li>direccion: $direccion</li>
+                    <li>dormitorios: $dormitorios</li>
+                    <li>precio: $precio euros</li>
+                    <li>tamano: $tamanyo</li>
+                    <li>extras: $extrasString</li>
+                    <li>foto:(no hay)</li>
+                    <li>extras: $extrasString</li>
+                    <li>observaciones: $observaciones</li>
+                </ul>
+                <a href='insertar.php'>[ Insertar otra vivienda ]</a>";
+            } else {
+                registrarErrorBD("Error al registrar vivienda");
+            }
+        }
     }
 
 }

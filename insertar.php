@@ -95,6 +95,7 @@
         </P>
 
         <P><INPUT TYPE="submit" NAME="insertar" VALUE="Insertar vivienda"></P>
+        <p><a href="index.php">Volver</a></p>
 
     </FORM>
 

@@ -17,4 +17,6 @@ Campo direccion vacio
 Campo tamano vacio
 Formato tamano no valido
 Formato tamano no valido
+Campo direccion vacio
+Campo direccion vacio
 
