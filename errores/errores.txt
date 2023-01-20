@@ -1,7 +1,0 @@
-Campo direccion vacio
-Campo precio vacio
-Campo tamano vacio
-Campo direccion vacio
-Formato precio no valido
-Campo tamano vacio
-
