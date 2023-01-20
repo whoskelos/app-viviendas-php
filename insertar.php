@@ -1,3 +1,10 @@
+<?php
+session_name("login");
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("Location: login.php");
+}
+?>
 <HTML LANG="es">
 
 <HEAD>

@@ -1,3 +1,10 @@
+<?php
+session_name("login");
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("Location: login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +15,9 @@
     <title>borrar viviendas</title>
 </head>
 <style>
+    h1 {
+        color: blue;
+    }
     table tr td {
         border: 1px solid black;
     }
@@ -44,7 +54,7 @@
                     <td><?php echo $vivienda->precio ?></td>
                     <td><?php echo $vivienda->tamanyo ?></td>
                     <td><?php echo $vivienda->extras ?></td>
-                    <td><a href="<?php echo $vivienda->foto ?>"><img src="file-img-ico.png" width="20" /></a></td>
+                    <td><a href="img/<?php echo $vivienda->foto ?>"><img src="file-img-ico.png" width="20" /></a></td>
                     <td><input type="checkbox" name="idViviendas[]" value="<?php echo $vivienda->id ?>"></td>
                 </tr>
                 <?php endforeach; } else { echo "<h4 style='color:red'>No hay viviendas para mostrar</h4>";
@@ -54,6 +64,7 @@
             </tbody>
         </table>
         <input style="margin-top: 5px;" type="submit" value="Eliminar viviendas marcadas" name="enviar">
+        <p><a href="index.php">Volver</a></p>
     </form>
 </body>
 

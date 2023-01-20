@@ -38,7 +38,6 @@ function registrarErrorImg($err){
 
 function subirImagen(){
     $sizeImagen = $_FILES['foto']['size'];
-    echo $sizeImagen;
     //si el tamano excede la directiva max_file_size puesta en html
     if ($sizeImagen <= $_POST['MAX_FILE_SIZE']) {
         $dir = "img/";
@@ -71,6 +70,7 @@ function subirImagen(){
     } else {
         //registrar error imagen
         registrarErrorImg("El fichero subido excede de la directiva max_file_size del formulario ");
+        echo "<a href='insertar.php'>[ Insertar otra vivienda ]</a>";
         return false;
         // return "<p>Error al subir el fichero excede del tamano del max_file_size </p>";
     }

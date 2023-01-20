@@ -26,6 +26,7 @@
     if (isset($_POST['enviar'])) {
         $errores = [];
         include "sanear.php";
+        include "funciones.php";
         $usuario = sanear("usuario");
         $password = sanear("clave");
         if ($usuario == "" || $password == "") {
@@ -33,6 +34,8 @@
                 <p>[<a href='login.php'>Conectar</a>]</p>
             </div>";
             $errores[] = "Usuario/Contraseñas vacío";
+            registrarError("usuario o contrasenas vacios");
+
         }
 
         if (empty($errores)) {
@@ -46,11 +49,15 @@
             if ($result->rowCount() > 0) {
                 //redirigo al index
                 include 'crearTablaViv.php';
+                session_name("login");
+                session_start();
+                $_SESSION["login"] = $usuario;
                 header("Location: index.php");
             } else {
                 echo "<div class='container'>Acceso no autorizado
                 <p>[<a href='login.php'>Conectar</a>]</p>
             </div>";
+            registrarErrorBD("Usuario o contrasena no validos");
             }
         }
     }

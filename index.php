@@ -1,3 +1,10 @@
+<?php
+session_name("login");
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("Location: login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +31,7 @@
         <div class="main">
             <hr>
             <ul>
-                <li><a href="">Consultar viviendas</a></li>
+                <li><a href="consultar.php">Consultar viviendas</a></li>
                 <li><a href="insertar.php">Insertar nueva vivienda</a></li>
                 <li><a href="borrar.php">Eliminar vivienda</a></li>
             </ul>
